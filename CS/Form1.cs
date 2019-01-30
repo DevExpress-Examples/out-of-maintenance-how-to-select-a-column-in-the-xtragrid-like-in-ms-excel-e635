@@ -22,10 +22,12 @@ namespace WindowsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'nwindDataSet.Products' table. You can move, or remove it, as needed.
-            this.productsTableAdapter.Fill(this.nwindDataSet.Products);
             selectedColumns = new ArrayList();
 
+            var list = new BindingList<Item>();
+            for (int i = 0; i < 50; i++)
+                list.Add(new Item() { Var1 = i, Var2 = i * 10, Var3 = i * 100, Var4 = "Test" + i, Var5 = "Var" + i, Var6 = i.ToString() });
+            gridControl1.DataSource = list;
         }
 
         private void gridView1_MouseDown(object sender, MouseEventArgs e)
@@ -46,5 +48,14 @@ namespace WindowsApplication1
                 }
             }
         }
+    }
+    public class Item
+    {
+        public int Var1 { get; set; }
+        public int Var2 { get; set; }
+        public int Var3 { get; set; }
+        public string Var4 { get; set; }
+        public string Var5 { get; set; }
+        public string Var6 { get; set; }
     }
 }

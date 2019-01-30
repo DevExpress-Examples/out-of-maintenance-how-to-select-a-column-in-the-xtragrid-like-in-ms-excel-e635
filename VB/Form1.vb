@@ -20,10 +20,13 @@ Namespace WindowsApplication1
 		Private selectedColumns As ArrayList
 
 		Private Sub Form1_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
-			' TODO: This line of code loads data into the 'nwindDataSet.Products' table. You can move, or remove it, as needed.
-			Me.productsTableAdapter.Fill(Me.nwindDataSet.Products)
 			selectedColumns = New ArrayList()
 
+			Dim list = New BindingList(Of Item)()
+			For i As Integer = 0 To 49
+				list.Add(New Item() With {.Var1 = i, .Var2 = i * 10, .Var3 = i * 100, .Var4 = "Test" & i, .Var5 = "Var" & i, .Var6 = i.ToString()})
+			Next i
+			gridControl1.DataSource = list
 		End Sub
 
 		Private Sub gridView1_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles gridView1.MouseDown
@@ -39,5 +42,61 @@ Namespace WindowsApplication1
 				End If
 			End If
 		End Sub
+	End Class
+	Public Class Item
+		Private privateVar1 As Integer
+		Public Property Var1() As Integer
+			Get
+				Return privateVar1
+			End Get
+			Set(ByVal value As Integer)
+				privateVar1 = value
+			End Set
+		End Property
+		Private privateVar2 As Integer
+		Public Property Var2() As Integer
+			Get
+				Return privateVar2
+			End Get
+			Set(ByVal value As Integer)
+				privateVar2 = value
+			End Set
+		End Property
+		Private privateVar3 As Integer
+		Public Property Var3() As Integer
+			Get
+				Return privateVar3
+			End Get
+			Set(ByVal value As Integer)
+				privateVar3 = value
+			End Set
+		End Property
+		Private privateVar4 As String
+		Public Property Var4() As String
+			Get
+				Return privateVar4
+			End Get
+			Set(ByVal value As String)
+				privateVar4 = value
+			End Set
+		End Property
+		Private privateVar5 As String
+		Public Property Var5() As String
+			Get
+				Return privateVar5
+			End Get
+			Set(ByVal value As String)
+				privateVar5 = value
+			End Set
+		End Property
+		Private privateVar6 As String
+		Public Property Var6() As String
+			Get
+				Return privateVar6
+			End Get
+			Set(ByVal value As String)
+				privateVar6 = value
+			End Set
+		End Property
 	End Class
 End Namespace
